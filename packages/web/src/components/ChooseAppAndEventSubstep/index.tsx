@@ -173,6 +173,7 @@ function ChooseAppAndEventSubstep(
               <TextField
                 {...params}
                 label={formatMessage('flowEditor.chooseApp')}
+                required
               />
             )}
             value={getOption(appOptions, step.appKey) || null}
@@ -199,6 +200,7 @@ function ChooseAppAndEventSubstep(
                   <TextField
                     {...params}
                     label={formatMessage('flowEditor.chooseEvent')}
+                    required
                     InputProps={{
                       ...params.InputProps,
                       endAdornment: (

@@ -91,7 +91,9 @@ export default function InputCreator(
             disablePortal
             disableClearable={required}
             options={preparedOptions}
-            renderInput={(params) => <MuiTextField {...params} label={label} />}
+            renderInput={(params) => (
+              <MuiTextField {...params} label={label} required={required} />
+            )}
             defaultValue={value as string}
             description={description}
             loading={loading}
@@ -111,13 +113,13 @@ export default function InputCreator(
             disablePortal
             disableClearable={required}
             options={preparedOptions}
-            renderInput={(params) => <MuiTextField {...params} label={label} />}
             defaultValue={value as string}
             description={description}
             loading={loading}
             disabled={disabled}
             showOptionValue={showOptionValue}
             shouldUnregister={shouldUnregister}
+            required={required}
           />
         )}
 

@@ -54,7 +54,7 @@ function FlowSubstep(props: FlowSubstepProps): React.ReactElement {
             pb: 3,
             flexDirection: 'column',
             alignItems: 'flex-start',
-            position: 'relative'
+            position: 'relative',
           }}
         >
           {!!args?.length && (

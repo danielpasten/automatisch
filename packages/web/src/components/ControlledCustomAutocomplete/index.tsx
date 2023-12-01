@@ -36,10 +36,12 @@ import { processStepWithExecutions } from 'components/PowerInput/data';
 import { StepExecutionsContext } from 'contexts/StepExecutions';
 
 interface ControlledCustomAutocompleteProps
-  extends AutocompleteProps<IFieldDropdownOption, boolean, boolean, boolean> {
+  extends Omit<
+    AutocompleteProps<IFieldDropdownOption, boolean, boolean, boolean>,
+    'renderInput'
+  > {
   showOptionValue?: boolean;
   dependsOn?: string[];
-
   defaultValue?: string;
   name: string;
   label?: string;
@@ -237,7 +239,7 @@ function ControlledCustomAutocomplete(
                 variant="outlined"
                 sx={{ bgcolor: 'white', display: 'inline-block', px: 0.75 }}
               >
-                {label}
+                {`${label}${required ? ' *' : ''}`}
               </InputLabel>
             </InputLabelWrapper>
 

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import FormHelperText from '@mui/material/FormHelperText';
-import Autocomplete, { AutocompleteProps, createFilterOptions } from '@mui/material/Autocomplete';
+import Autocomplete, {
+  AutocompleteProps,
+  createFilterOptions,
+} from '@mui/material/Autocomplete';
 import Typography from '@mui/material/Typography';
 import type { IFieldDropdownOption } from '@automatisch/types';
 
@@ -23,8 +26,8 @@ const filterOptions = createFilterOptions<IFieldDropdownOption>({
   stringify: ({ label, value }) => `
     ${label}
     ${value}
-  `
-})
+  `,
+});
 
 function ControlledAutocomplete(
   props: ControlledAutocompleteProps
