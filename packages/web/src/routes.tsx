@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Layout from 'components/Layout';
 import PublicLayout from 'components/PublicLayout';
+import AdminSettingsLayout from 'components/AdminSettingsLayout';
 import Applications from 'pages/Applications';
 import Application from 'pages/Application';
 import Executions from 'pages/Executions';
@@ -13,6 +14,7 @@ import SignUp from 'pages/SignUp/index.ee';
 import ForgotPassword from 'pages/ForgotPassword/index.ee';
 import ResetPassword from 'pages/ResetPassword/index.ee';
 import EditorRoutes from 'pages/Editor/routes';
+
 import * as URLS from 'config/urls';
 import settingsRoutes from './settingsRoutes';
 import adminSettingsRoutes from './adminSettingsRoutes';
@@ -85,10 +87,7 @@ export default (
       }
     />
 
-    <Route
-      path={URLS.LOGIN_CALLBACK}
-      element={<LoginCallback />}
-    />
+    <Route path={URLS.LOGIN_CALLBACK} element={<LoginCallback />} />
 
     <Route
       path={URLS.SIGNUP}
@@ -130,7 +129,9 @@ export default (
 
     <Route path={URLS.SETTINGS}>{settingsRoutes}</Route>
 
-    <Route path={URLS.ADMIN_SETTINGS}>{adminSettingsRoutes}</Route>
+    <Route path={URLS.ADMIN_SETTINGS} element={<AdminSettingsLayout />}>
+      {adminSettingsRoutes}
+    </Route>
 
     <Route
       element={

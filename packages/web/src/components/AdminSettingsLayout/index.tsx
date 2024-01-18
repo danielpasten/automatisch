@@ -4,6 +4,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import LockIcon from '@mui/icons-material/LockPerson';
 import BrushIcon from '@mui/icons-material/Brush';
 import AppsIcon from '@mui/icons-material/Apps';
+import { Outlet } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,10 +17,6 @@ import AppBar from 'components/AppBar';
 import Drawer from 'components/Drawer';
 import * as URLS from 'config/urls';
 import useCurrentUserAbility from 'hooks/useCurrentUserAbility';
-
-type SettingsLayoutProps = {
-  children: React.ReactNode;
-};
 
 type DrawerLink = {
   Icon: SvgIconComponent;
@@ -95,9 +92,7 @@ const drawerBottomLinks = [
   },
 ];
 
-export default function SettingsLayout({
-  children,
-}: SettingsLayoutProps): React.ReactElement {
+export default function SettingsLayout(): React.ReactElement {
   const theme = useTheme();
   const currentUserAbility = useCurrentUserAbility();
   const matchSmallScreens = useMediaQuery(theme.breakpoints.down('lg'));
@@ -123,7 +118,6 @@ export default function SettingsLayout({
         onDrawerOpen={openDrawer}
         onDrawerClose={closeDrawer}
       />
-
       <Box sx={{ display: 'flex' }}>
         <Drawer
           links={drawerLinks}
@@ -132,11 +126,9 @@ export default function SettingsLayout({
           onOpen={openDrawer}
           onClose={closeDrawer}
         />
-
         <Box sx={{ flex: 1 }}>
           <Toolbar />
-
-          {children}
+          <Outlet />
         </Box>
       </Box>
     </>
