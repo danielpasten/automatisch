@@ -2,6 +2,7 @@
 
 The following integrations are currently supported by Automatisch.
 
+- [Appwrite](/apps/appwrite/triggers)
 - [Carbone](/apps/carbone/actions)
 - [DeepL](/apps/deepl/actions)
 - [Delay](/apps/delay/actions)
