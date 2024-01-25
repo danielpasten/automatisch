@@ -15,6 +15,8 @@ import * as React from 'react';
 import { SvgIconComponent } from '@mui/icons-material';
 import AppBar from 'components/AppBar';
 import Drawer from 'components/Drawer';
+import Can from 'components/Can';
+
 import * as URLS from 'config/urls';
 import useCurrentUserAbility from 'hooks/useCurrentUserAbility';
 
@@ -92,7 +94,7 @@ const drawerBottomLinks = [
   },
 ];
 
-export default function SettingsLayout(): React.ReactElement {
+export default function SettingsLayout(): React.ReactElement | null {
   const theme = useTheme();
   const currentUserAbility = useCurrentUserAbility();
   const matchSmallScreens = useMediaQuery(theme.breakpoints.down('lg'));
@@ -112,7 +114,7 @@ export default function SettingsLayout(): React.ReactElement {
   });
 
   return (
-    <>
+    <Can I="read" a="User">
       <AppBar
         drawerOpen={isDrawerOpen}
         onDrawerOpen={openDrawer}
@@ -131,6 +133,6 @@ export default function SettingsLayout(): React.ReactElement {
           <Outlet />
         </Box>
       </Box>
-    </>
+    </Can>
   );
 }
