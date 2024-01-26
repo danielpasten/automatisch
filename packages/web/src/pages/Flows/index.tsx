@@ -34,12 +34,7 @@ export default function Flows(): React.ReactElement {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = parseInt(searchParams.get('page') || '', 10) || 1;
   const [flowName, setFlowName] = React.useState('');
-  const [loading, setLoading] = React.useState(false);
-  const [getFlows, { data }] = useLazyQuery(GET_FLOWS, {
-    onCompleted: () => {
-      setLoading(false);
-    },
-  });
+  const [getFlows, { data, loading }] = useLazyQuery(GET_FLOWS);
 
   const fetchData = React.useMemo(
     () =>
@@ -58,8 +53,6 @@ export default function Flows(): React.ReactElement {
 
   React.useEffect(
     function fetchFlowsOnSearch() {
-      setLoading(true);
-
       fetchData(flowName);
     },
     [fetchData, flowName]

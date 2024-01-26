@@ -35,16 +35,16 @@ function getFeedbackPayload(date: DateTime) {
       translationEntryId: 'trialBadge.endsToday',
       status: 'warning' as const,
       over: false,
-    }
+    };
   } else {
     return {
       translationEntryId: 'trialBadge.xDaysLeft',
       translationEntryValues: {
-        remainingDays: diffInDays
+        remainingDays: diffInDays,
       },
       status: 'warning' as const,
       over: false,
-    }
+    };
   }
 }
 
@@ -53,36 +53,41 @@ export default function useTrialStatus(): UseTrialStatusReturn {
   const location = useLocation();
   const state = location.state as { checkoutCompleted: boolean };
   const checkoutCompleted = state?.checkoutCompleted;
-  const { data, loading, startPolling, stopPolling } = useQuery(GET_TRIAL_STATUS);
+  const { data, loading, startPolling, stopPolling } =
+    useQuery(GET_TRIAL_STATUS);
   const hasTrial = !!data?.getTrialStatus?.expireAt;
 
-  React.useEffect(function pollDataUntilTrialEnds() {
-    if (checkoutCompleted && hasTrial) {
-      startPolling(1000);
-    }
-  }, [checkoutCompleted, hasTrial, startPolling]);
+  React.useEffect(
+    function pollDataUntilTrialEnds() {
+      if (checkoutCompleted && hasTrial) {
+        startPolling(1000);
+      }
+    },
+    [checkoutCompleted, hasTrial, startPolling]
+  );
 
-  React.useEffect(function stopPollingWhenTrialEnds() {
-    if (checkoutCompleted && !hasTrial) {
-      stopPolling();
-    }
-  }, [checkoutCompleted, hasTrial, stopPolling]);
+  React.useEffect(
+    function stopPollingWhenTrialEnds() {
+      if (checkoutCompleted && !hasTrial) {
+        stopPolling();
+      }
+    },
+    [checkoutCompleted, hasTrial, stopPolling]
+  );
 
-  if (loading || !data.getTrialStatus) return null;
+  if (loading || !data?.getTrialStatus) return null;
 
-  const expireAt = DateTime.fromMillis(Number(data.getTrialStatus.expireAt)).startOf('day');
+  const expireAt = DateTime.fromMillis(
+    Number(data.getTrialStatus.expireAt)
+  ).startOf('day');
 
-  const {
-    translationEntryId,
-    translationEntryValues,
-    status,
-    over,
-  } = getFeedbackPayload(expireAt);
+  const { translationEntryId, translationEntryValues, status, over } =
+    getFeedbackPayload(expireAt);
 
   return {
     message: formatMessage(translationEntryId, translationEntryValues),
     expireAt,
     over,
-    status
+    status,
   };
 }
