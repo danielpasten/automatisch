@@ -4,7 +4,7 @@ import Collapse from '@mui/material/Collapse';
 import ListItem from '@mui/material/ListItem';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import type { IStep, ISubstep } from '@automatisch/types';
+import type { IStep, ISubstep } from 'types';
 
 import { EditorContext } from 'contexts/Editor';
 import FlowSubstepTitle from 'components/FlowSubstepTitle';
