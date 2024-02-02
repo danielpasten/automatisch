@@ -90,10 +90,14 @@ export default function Applications(): React.ReactElement {
         )}
 
         {!loading && !hasApps && (
-          <NoResultFound
-            text={formatMessage('apps.noConnections')}
-            to={URLS.NEW_APP_CONNECTION}
-          />
+          <Can I="create" a="Connection" passThrough>
+            {(allowed) => (
+              <NoResultFound
+                text={formatMessage('apps.noConnections')}
+                {...(allowed && { to: URLS.NEW_APP_CONNECTION })}
+              />
+            )}
+          </Can>
         )}
 
         {!loading &&
