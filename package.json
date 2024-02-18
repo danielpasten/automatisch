@@ -12,7 +12,6 @@
   "workspaces": {
     "packages": [
       "packages/web",
-      "packages/docs",
       "packages/backend",
       "packages/e2e-tests"
     ],
