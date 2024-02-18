@@ -11,8 +11,7 @@
   },
   "workspaces": {
     "packages": [
-      "packages/web",
-      "packages/backend"
+      "packages/web"
     ],
     "nohoist": [
       "**/babel-loader",

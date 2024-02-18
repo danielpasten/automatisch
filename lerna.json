@@ -1,5 +1,5 @@
 {
-  "packages": ["packages/web", "packages/backend"],
+  "packages": ["packages/web"],
   "version": "0.10.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
