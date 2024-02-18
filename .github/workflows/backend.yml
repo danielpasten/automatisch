@@ -39,10 +39,15 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: './packages/backend/package-lock.json'
       - name: Install dependencies
-        run: cd packages/backend && yarn
+        working-directory: ./packages/backend
+        run: npm ci
       - name: Copy .env-example.test file to .env.test
-        run: cd packages/backend && cp .env-example.test .env.test
+        working-directory: ./packages/backend
+        run: cp .env-example.test .env.test
       - name: Run tests
-        run: cd packages/backend && yarn test
+        working-directory: ./packages/backend
+        run: npm test
