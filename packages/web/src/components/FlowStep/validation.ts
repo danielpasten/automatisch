@@ -1,6 +1,6 @@
 import type { BaseSchema } from 'yup';
 import * as yup from 'yup';
-import type { IField, ISubstep } from '@automatisch/types';
+import type { IField, ISubstep } from 'types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import isEmpty from 'helpers/isEmpty';
 
