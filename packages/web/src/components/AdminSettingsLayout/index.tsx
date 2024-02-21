@@ -18,6 +18,7 @@ import Drawer from 'components/Drawer';
 import Can from 'components/Can';
 
 import * as URLS from 'config/urls';
+import useFormatMessage from 'hooks/useFormatMessage';
 import useCurrentUserAbility from 'hooks/useCurrentUserAbility';
 
 type DrawerLink = {
@@ -85,17 +86,9 @@ function createDrawerLinks({
   return items;
 }
 
-const drawerBottomLinks = [
-  {
-    Icon: ArrowBackIosNewIcon,
-    primary: 'adminSettingsDrawer.goBack',
-    to: '/',
-    dataTest: 'go-back-drawer-link',
-  },
-];
-
 export default function SettingsLayout(): React.ReactElement | null {
   const theme = useTheme();
+  const formatMessage = useFormatMessage();
   const currentUserAbility = useCurrentUserAbility();
   const matchSmallScreens = useMediaQuery(theme.breakpoints.down('lg'));
   const [isDrawerOpen, setDrawerOpen] = React.useState(!matchSmallScreens);
@@ -112,6 +105,15 @@ export default function SettingsLayout(): React.ReactElement | null {
       currentUserAbility.can('create', 'SamlAuthProvider'),
     canUpdateApp: currentUserAbility.can('update', 'App'),
   });
+
+  const drawerBottomLinks = [
+    {
+      Icon: ArrowBackIosNewIcon,
+      primary: formatMessage('adminSettingsDrawer.goBack'),
+      to: '/',
+      dataTest: 'go-back-drawer-link',
+    },
+  ];
 
   return (
     <Can I="read" a="User">
