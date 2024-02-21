@@ -5,6 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import type { IStep, ISubstep } from 'types';
+import isEqual from 'lodash/isEqual';
 
 import { EditorContext } from 'contexts/Editor';
 import FlowSubstepTitle from 'components/FlowSubstepTitle';
