@@ -11,13 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import ErrorIcon from '@mui/icons-material/Error';
 import CircularProgress from '@mui/material/CircularProgress';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import type {
-  IApp,
-  ITrigger,
-  IAction,
-  IStep,
-  ISubstep,
-} from '@automatisch/types';
+import type { IApp, ITrigger, IAction, IStep, ISubstep } from 'types';
 
 import { EditorContext } from 'contexts/Editor';
 import { StepExecutionsProvider } from 'contexts/StepExecutions';

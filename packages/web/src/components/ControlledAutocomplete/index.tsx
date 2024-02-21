@@ -6,7 +6,7 @@ import Autocomplete, {
   createFilterOptions,
 } from '@mui/material/Autocomplete';
 import Typography from '@mui/material/Typography';
-import type { IFieldDropdownOption } from '@automatisch/types';
+import type { IFieldDropdownOption } from 'types';
 
 interface ControlledAutocompleteProps
   extends AutocompleteProps<IFieldDropdownOption, boolean, boolean, boolean> {
